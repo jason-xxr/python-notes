@@ -8,8 +8,8 @@
     map(list, zip(*grid))
     ```
 
-2. Get C-like binary bits in str
+2. Get C-like binary bits for 32-bit int in str
     ```python
     x = -10
-    '{0:b}'.format(x & 0xffffffff)
+    '{0:032b}'.format(x & 0xffffffff)
     ```

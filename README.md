@@ -24,3 +24,7 @@
    ```
    [ (i, x) for i, x in reversed(list(enumerate(range(5,10))))]
    ```
+5. Count frequency of each element in a lit
+   ```
+   collections.Counter(['a','b','a','b','b','c'])
+   ```

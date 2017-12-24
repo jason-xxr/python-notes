@@ -28,6 +28,14 @@
    ```
    collections.Counter(['a','b','a','b','b','c'])
    ```
+6. Reduce
+   ```
+   # reduce has three parts:
+   # 1. a lambda/function that takes two argument, 1) an output which will be the next input; 2) input.
+   # 2. a sequence for input and output
+   # 3. an optional initial output
+   reduce(lambda output, input: output + [(input, ord(input))], 'abc', [])
+   ```
 6. Construct a Trie
    ```
    Trie = lambda: collections.defaultdict(Trie)

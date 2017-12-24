@@ -28,3 +28,14 @@
    ```
    collections.Counter(['a','b','a','b','b','c'])
    ```
+6. Contruct a Trie
+   ```
+   Trie = lambda: collections.defaultdict(Trie)
+   trie = Trie()
+   END = 'END'
+
+   for word in words:
+       # dict.__getitem__(k) creates a k-v pair for defaultdict,
+       # while dict.get(k) does not.
+       reduce(dict.__getitem__, word, trie)[END] = True
+   ```

@@ -28,7 +28,7 @@
    ```
    collections.Counter(['a','b','a','b','b','c'])
    ```
-6. Contruct a Trie
+6. Construct a Trie
    ```
    Trie = lambda: collections.defaultdict(Trie)
    trie = Trie()

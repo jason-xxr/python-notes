@@ -36,6 +36,11 @@
    # 3. an optional initial output
    reduce(lambda output, input: output + [(input, ord(input))], 'abc', [])
    ```
+6. Multiply all items in a list
+    ```
+    nums = [1,2,3,4,5]
+    reduce(lambda o, i: o*i, nums)
+    ```
 6. Construct a Trie
    ```
    Trie = lambda: collections.defaultdict(Trie)

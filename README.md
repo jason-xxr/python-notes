@@ -57,4 +57,8 @@
     Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10
     ```
     (x + 1)&(~x)
-
+8. A timer / counter from itertools
+    ```
+    countDown = itertools.count(start=100, step=-1)
+    next(countDown)
+    ```

@@ -53,10 +53,18 @@
        reduce(dict.__getitem__, word, trie)[END] = True
    ```
 7. Bit operations
-    ```
-    Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10
-    ```
-    (x + 1)&(~x)
+    1. Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10
+        ```
+        (x + 1)&(~x)
+        ```
+    2. Count set bits in an integer
+        ```
+        n = 0
+        while x!=0:
+            x = x&(x-1)
+            n += 1
+        print n
+        ```
 8. A timer / counter from itertools
     ```
     countDown = itertools.count(start=100, step=-1)

@@ -2,6 +2,10 @@
 
 ## Useful tricks
 
+1. Dictionary comprehensive
+    ```python
+    d = {i: i**3 for i in range(5)}
+    ```
 1. Transpose a matrix
     ```python
     grid = [[1,2],[3,4]]
@@ -21,15 +25,15 @@
    ```
 
 4. Reversely iterate list with index
-   ```
+   ```python
    [ (i, x) for i, x in reversed(list(enumerate(range(5,10))))]
    ```
 5. Count frequency of each element in a lit
-   ```
+   ```python
    collections.Counter(['a','b','a','b','b','c'])
    ```
 6. Reduce
-   ```
+   ```python
    # reduce has three parts:
    # 1. a lambda/function that takes two argument, 1) an output which will be the next input; 2) input.
    # 2. a sequence for input and output
@@ -37,12 +41,12 @@
    reduce(lambda output, input: output + [(input, ord(input))], 'abc', [])
    ```
 6. Multiply all items in a list
-    ```
+    ```python
     nums = [1,2,3,4,5]
     reduce(lambda o, i: o*i, nums)
     ```
 6. Construct a Trie
-   ```
+   ```python
    Trie = lambda: collections.defaultdict(Trie)
    trie = Trie()
    END = 'END'
@@ -54,11 +58,11 @@
    ```
 7. Bit operations
     1. Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10
-        ```
+        ```python
         (x + 1)&(~x)
         ```
     2. Count set bits in an integer
-        ```
+        ```python
         n = 0
         while x!=0:
             x = x&(x-1)
@@ -66,7 +70,7 @@
         print n
         ```
 8. A timer / counter from itertools
-    ```
+    ```python
     countDown = itertools.count(start=100, step=-1)
     next(countDown)
     ```

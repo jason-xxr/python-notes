@@ -30,7 +30,9 @@
    ```
 5. Count frequency of each element in a lit
    ```python
-   collections.Counter(['a','b','a','b','b','c'])
+   counter = collections.Counter('abcdeabcdabcaba')
+   # get top k most common elements:
+   top3 = counter.most_common(3)
    ```
 6. Reduce
    ```python

@@ -76,3 +76,8 @@
     countDown = itertools.count(start=100, step=-1)
     next(countDown)
     ```
+9. Math related problems
+    ```
+    # GCD, greatest common divisor
+    GCD = lambda a, b: (GCD(b, a % b) if a % b else b)
+    ```

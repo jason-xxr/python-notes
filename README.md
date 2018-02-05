@@ -101,9 +101,11 @@
         return a
     ```
 11. Geometry
-    ```
+    1. Triangle
+    ```python
     # signed area of triangle
     # https://algs4.cs.princeton.edu/99hull/
+    # https://algs4.cs.princeton.edu/99hull/Point2D.java.html
     # https://en.wikipedia.org/wiki/Triangle#Using_coordinates
     class Point(object):
         def __init__(self, x, y):

@@ -80,13 +80,13 @@
     ```python
     # GCD, greatest common divisor
     GCD = lambda a, b: (GCD(b, a % b) if a % b else b)
-    # LCD, least common denominator
-    LCD = lambda a, b: a*b / GCD(a, b)
-    ```
+    # LCD, least common denominator
+    LCD = lambda a, b: a*b / GCD(a, b)
+    ```
 10. Integer factorization
     ```python
     def trial_division(n):
-        a = []  
+        a = []
         while n%2 == 0:
             a.append(2)
             n /= 2
@@ -99,5 +99,4 @@
                 #Only odd number is possible
                 f += 2
         return a
-```
-    
+    ```

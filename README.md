@@ -57,6 +57,8 @@
        # dict.__getitem__(k) creates a k-v pair for defaultdict,
        # while dict.get(k) does not.
        reduce(dict.__getitem__, word, trie)[END] = True
+       # or
+       reduce(lambda dic, ch: dic[ch], word, trie)[END] = True
    ```
 7. Bit operations
     1. Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10

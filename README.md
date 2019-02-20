@@ -11,7 +11,18 @@
     grid = [[1,2],[3,4]]
     map(list, zip(*grid))
     ```
-
+1. Build a directional graph dict using defaultdict
+    ```python
+    def addEdge(dd, a, b):
+        # dd is a defaultdict
+        # must return the dict for reduce
+        dd[a].dd(b)
+        return dd
+    
+    pairs = [(1,2), (2,3), (1,4)]
+    graph = reduce(lambda dd, t: addEdge(dd, t[0], t[1]), pairs, collections.defaultdict(list))
+    ```
+    
 2. Get C-like binary bits for 32-bit int in str
     ```python
     x = -10

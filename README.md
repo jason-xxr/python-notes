@@ -16,7 +16,7 @@
     def addEdge(dd, a, b):
         # dd is a defaultdict
         # must return the dict for reduce
-        dd[a].dd(b)
+        dd[a].append(b)
         return dd
     
     pairs = [(1,2), (2,3), (1,4)]

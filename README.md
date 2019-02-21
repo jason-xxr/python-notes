@@ -11,6 +11,15 @@
     grid = [[1,2],[3,4]]
     map(list, zip(*grid))
     ```
+1. Check for any/all values in a grid
+    ```python
+    grid = [[1,1],[1,2]]
+    any(3 in row for row in grid) # False
+    any(2 in row for row in grid) # True
+    all(1 in row for row in grid) # True
+    all(x==1 for row in g for x in row) # False
+    all(x>0 for row in g for x in row) # True
+    ```
 1. Build a directional graph dict using defaultdict
     ```python
     def addEdge(dd, a, b):

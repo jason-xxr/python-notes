@@ -6,6 +6,12 @@
     ```python
     d = {i: i**3 for i in range(5)}
     ```
+1. Iterate a matrix by row or column
+    ```python
+    grid = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+    [row for row in grid]
+    [col for col in zip(*grid)]
+    ```
 1. Transpose a matrix
     ```python
     grid = [[1,2],[3,4]]

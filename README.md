@@ -6,6 +6,12 @@
     ```python
     d = {i: i**3 for i in range(5)}
     ```
+1. Default dict of a default dict of a list
+    ```python
+    dd = collections.defaultdict(lambda: collections.defaultdict(list))
+    dd[0][1].append(2)
+    dd
+    ```
 1. Unpacking
     ```python
     params = [1, 10, 2]

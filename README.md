@@ -2,6 +2,12 @@
 
 ## Useful tricks
 
+1. Regex, capture and group
+    ```python
+    pattern = re.compile('(\d+)\.(\d*)\((\d+)\)')
+    string = '0.12(345)'
+    groups = pattern.match(string).groups() # ('0', '12', '345')
+    ```
 1. Dictionary comprehensive
     ```python
     d = {i: i**3 for i in range(5)}

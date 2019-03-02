@@ -184,3 +184,12 @@
         print parallelograms
         # set([((-2, 1), (0, 0), (0, 2), (2, 1)), ((0, 0), (0, 2), (2, -1), (2, 1)), ((0, 0), (0, 2), (2, 1), (2, 3))])
         ```
+    3. Two vectors are perpendicular
+        Two vectors are perpendicular if their dot product is 0.
+        ```python
+        # v12 = p2 - p1
+        # v34 = p4 - p3
+        # v12 and v34 are perpendicular if dot(v12, v34) == 0
+        dot = lambda v1, v2: (v1[0]*v2[0] + v1[1]*v2[1])
+        perpendicular = lambda v1, v2: dot(v1, v2) == 0
+        ```

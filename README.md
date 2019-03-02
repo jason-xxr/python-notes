@@ -168,9 +168,9 @@
     2. Parallelogram
         ```python
         # assume P1, P2, P3, P4 are counter-clockwise points of a parallelogram
-        # vector12 = p2 - p1
-        # vector13 = p3 - p1
-        # vector14 = vector12 + vector13 = p4 - p1
+        # vector21 = p2 - p1
+        # vector31 = p3 - p1
+        # vector41 = vector12 + vector13 = p4 - p1
         # p4 - p1 = p2 - p1 + p3 - p1
         # p2 + p3 - p1 - p4 = 0
         points = set([(-2, 1), (0, 0), (2, -1), (2, 1), (2, 3), (0, 2)])
@@ -187,9 +187,11 @@
     3. Two vectors are perpendicular
         Two vectors are perpendicular if their dot product is 0.
         ```python
-        # v12 = p2 - p1
-        # v34 = p4 - p3
-        # v12 and v34 are perpendicular if dot(v12, v34) == 0
+        # v21 = p2 - p1
+        # v43 = p4 - p3
+        # v21 and v43 are perpendicular if dot(v21, v43) == 0
         dot = lambda v1, v2: (v1[0]*v2[0] + v1[1]*v2[1])
         perpendicular = lambda v1, v2: dot(v1, v2) == 0
+        length = lambda v: (v[0]**2+v[1]**2)**0.5
+        area = lambda v21, v31: length(v21)*length(v31)
         ```

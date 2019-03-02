@@ -147,20 +147,40 @@
     ```
 11. Geometry
     1. Triangle
-    ```python
-    # signed area of triangle
-    # https://algs4.cs.princeton.edu/99hull/
-    # https://algs4.cs.princeton.edu/99hull/Point2D.java.html
-    # https://en.wikipedia.org/wiki/Triangle#Using_coordinates
-    class Point(object):
-        def __init__(self, x, y):
-            self.x, self.y = x, y
-        def x(self):
-            return self.x
-        def y(self):
-            return self.y
-    signedArea2 = lambda a, b, c: (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x)
-    # signedArea2 >  0: a->b->c is couterclockwise
-    # signedArea2 <  0: a->b->c is clockwise
-    # signedArea2 == 0: a->b->c is linear
-    area = lambda a, b, c: abs(signedArea2(a, b, c))/2
+        ```python
+        # signed area of triangle
+        # https://algs4.cs.princeton.edu/99hull/
+        # https://algs4.cs.princeton.edu/99hull/Point2D.java.html
+        # https://en.wikipedia.org/wiki/Triangle#Using_coordinates
+        class Point(object):
+            def __init__(self, x, y):
+                self.x, self.y = x, y
+            def x(self):
+                return self.x
+            def y(self):
+                return self.y
+        signedArea2 = lambda a, b, c: (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x)
+        # signedArea2 >  0: a->b->c is couterclockwise
+        # signedArea2 <  0: a->b->c is clockwise
+        # signedArea2 == 0: a->b->c is linear
+        area = lambda a, b, c: abs(signedArea2(a, b, c))/2
+        ```
+    2. Parallelogram
+        ```python
+        # assume P1, P2, P3, P4 are counter-clockwise points of a parallelogram
+        # vector12 = p2 - p1
+        # vector13 = p3 - p1
+        # vector14 = vector12 + vector13 = p4 - p1
+        # p4 - p1 = p2 - p1 + p3 - p1
+        # p2 + p3 - p1 - p4 = 0
+        points = set([(-2, 1), (0, 0), (2, -1), (2, 1), (2, 3), (0, 2)])
+        parallelograms = set()
+        for triangle in itertools.combinations(points,3):
+            for i in range(3):
+                p1, p2, p3 = triangle[i-3], triangle[i-2], triangle[i-1]
+                p4 = p2[0] + p3[0] - p1[0], p2[1] + p3[1] - p1[1]
+                if p4 != p1 and p4 in points:
+                    parallelograms.add(tuple(sorted([p1,p2,p3,p4])))
+        print parallelograms
+        # set([((-2, 1), (0, 0), (0, 2), (2, 1)), ((0, 0), (0, 2), (2, -1), (2, 1)), ((0, 0), (0, 2), (2, 1), (2, 3))])
+        ```

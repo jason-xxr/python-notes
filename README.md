@@ -2,6 +2,10 @@
 
 ## Useful tricks
 
+1. Is a list sorted
+    ```python
+    isSorted = lambda l: all(l[i] <= l[i+1] for i in xrange(len(l)-1))
+    ```
 1. Regex, capture and group
     ```python
     pattern = re.compile('(\d+)\.(\d*)\((\d+)\)')

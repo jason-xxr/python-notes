@@ -132,7 +132,9 @@
 9. Math related problems
     ```python
     # GCD, greatest common divisor
-    GCD = lambda a, b: (GCD(b, a % b) if a % b else b)
+    GCD = lambda s, l: GCD(l % s, s) if l % s else s
+    # GCD of a list of numbers, sorted
+    gcd = reduce(GCD, [30, 40, 60])
     # LCD, least common denominator
     LCD = lambda a, b: a*b / GCD(a, b)
     ```

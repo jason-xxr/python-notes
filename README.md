@@ -4,7 +4,7 @@
 
 1. Is a list sorted
     ```python
-    isSorted = lambda l: all(l[i] <= l[i+1] for i in xrange(len(l)-1))
+    isSorted = lambda l: all(l[i] <= l[i+1] for i in range(len(l)-1))
     ```
 1. Regex, capture and group
     ```python
@@ -25,20 +25,29 @@
 1. Unpacking
     ```python
     params = [1, 10, 2]
-    range(*params) # [1, 3, 5, 7, 9]
+    list(range(*params)) # [1, 3, 5, 7, 9]
     ```
 1. Iterate a matrix by row or column
     ```python
     grid = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
     [row for row in grid]
     [col for col in zip(*grid)]
+    list(zip(*grid))
     ```
 1. Transpose a matrix
     ```python
     grid = [[1,2],[3,4]]
-    map(list, zip(*grid))
+    # unpack multiple list into list of tuples
+    # then map each tuple to a list in the parent list
+    list(map(list, zip(*grid)))
     ```
-1. Check for any/all values in a grid
+1. Flatten a 2D matrix to 1D list
+    ```python
+    grid = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+    sum(grid, []) # same as below list
+    list(x for row in grid for x in row)
+    ```
+3. Check for any/all values in a grid
     ```python
     grid = [[1,1],[1,2]]
     any(3 in row for row in grid) # False
@@ -49,32 +58,34 @@
     ```
 1. Build a directional graph dict using defaultdict
     ```python
-    def addEdge(dd, a, b):
-        # dd is a defaultdict
-        # must return the dict for reduce
-        dd[a].append(b)
+    def addd_edge(dd, a, b):
+        # dd is a defaultdict(<class 'set'>, {})
+        # must return the dict for reduce, optional if use for-loop
+        dd[a].add(b)
         return dd
     
     pairs = [(1,2), (2,3), (1,4)]
-    graph = reduce(lambda dd, t: addEdge(dd, t[0], t[1]), pairs, collections.defaultdict(list))
+    graph = functools.reduce(lambda dd, t: addEdge(dd, t[0], t[1]), pairs, collections.defaultdict(set))
+    # same as
+    graph2 = collections.defaultdict(set)
+    for a, b in pairs:
+        add_edge(graph2, a, b)
     ```
     
 2. Get C-like binary bits for 32-bit int in str
     ```python
-    x = -10
-    '{0:032b}'.format(x & 0xffffffff)
+    bin(-10 & 0xffffffff) # '0b11111111111111111111111111110110'
+    '{0:032b}'.format(-10 & 0xffffffff) # '11111111111111111111111111110110'
+    # note the direct format to binary are signed, e.g.
+    bin(-10) # '-0b1010'
+    '{0:032b}'.format(-10) # '-0000000000000000000000000001010'
     ```
-
-3. Convert 2D matrix to list
-   ```python
-   grid = [[1,2],[3,4]]
-   sum(grid, [])
-   ```
 
 4. Reversely iterate list with index
    ```python
    [ (i, x) for i, x in reversed(list(enumerate(range(5,10))))]
    ```
+   
 5. Count frequency of each element in a lit
    ```python
    counter = collections.Counter('abcdeabcdabcaba')
@@ -87,12 +98,20 @@
    # 1. a lambda/function that takes two argument, 1) an output which will be the next input; 2) input.
    # 2. a sequence for input and output
    # 3. an optional initial output
-   reduce(lambda output, input: output + [(input, ord(input))], 'abc', [])
+   l = functools.reduce(lambda output, input: output + [(input, ord(input))], 'abc', [])
+   # same as the for-loop
+   l = []
+   for c in 'abc':
+       l += (c, ord(c)),
    ```
 6. Multiply all items in a list
     ```python
     nums = [1,2,3,4,5]
-    reduce(lambda o, i: o*i, nums)
+    functools.reduce(lambda o, i: o*i, nums)
+    # same as
+    product = 1
+    for i in nums:
+        product *= i
     ```
 6. Construct a Trie
    ```python
@@ -100,12 +119,20 @@
    trie = Trie()
    END = 'END'
 
+   words = ["cat", "dog", "catch", "a"]
    for word in words:
        # dict.__getitem__(k) creates a k-v pair for defaultdict,
        # while dict.get(k) does not.
-       reduce(dict.__getitem__, word, trie)[END] = True
+       functools.reduce(dict.__getitem__, word, trie)[END] = True
        # or
-       reduce(lambda dic, ch: dic[ch], word, trie)[END] = True
+       functools.reduce(lambda dic, ch: dic[ch], word, trie)[END] = True
+   # same as
+   branch = trie
+   for word in words:
+       for ch in word:
+           branch = branch[ch]
+       branch[END] = True
+       branch = trie
    ```
 7. Bit operations
     1. Get binary complement
@@ -131,12 +158,13 @@
     ```
 9. Math related problems
     ```python
-    # GCD, greatest common divisor
+    # GCD, greatest common divisor btween two integers
     GCD = lambda s, l: GCD(l % s, s) if l % s else s
     # GCD of a list of numbers, sorted
-    gcd = reduce(GCD, [30, 40, 60])
+    gcd = functools.reduce(GCD, [30, 40, 60])
     # LCD, least common denominator
-    LCD = lambda a, b: a*b / GCD(a, b)
+    LCD = lambda a, b: a*b // GCD(a, b)
+    lcd = functools.reduce(LCD, [30, 40, 60])
     ```
 10. Integer factorization
     ```python
@@ -144,14 +172,15 @@
         a = []
         while n%2 == 0:
             a.append(2)
-            n /= 2
+            n //= 2
         f = 3
         while n > 1:
-            if (n % f == 0):
+            if n%f == 0:
                 a.append(f)
-                n /= f
+                n //= f
             else:
-                #Only odd number is possible
+                # Ideally go through prime number list
+                # At least only odd number is possible
                 f += 2
         return a
     ```

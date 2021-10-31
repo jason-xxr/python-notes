@@ -186,6 +186,14 @@
     ```
 11. Geometry
     1. Triangle
+       Assuming we have a free triangle (in blue-solid line) on the plane X-Y, and we have the (x, y) coordinates of the 3 vertices. 
+       The area can be computed as below.
+       We can see the triangle area is the same as the area of 3 red triangles, which is the half of the corresponding 3 sub rectangular panels.
+       The area of the 3 sub rectangular panels is the (big rectangular - lower-left rectangular).
+       Thus the blue triangle area is 1/2 of that.
+
+        <img src="https://raw.githubusercontent.com/jason-xxr/python-notes/master/TriangleArea.svg">
+
         ```python
         # signed area of triangle
         # https://algs4.cs.princeton.edu/99hull/

@@ -202,10 +202,6 @@
         class Point(object):
             def __init__(self, x, y):
                 self.x, self.y = x, y
-            def x(self):
-                return self.x
-            def y(self):
-                return self.y
         signedArea2 = lambda a, b, c: (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x)
         # signedArea2 >  0: a->b->c is couterclockwise
         # signedArea2 <  0: a->b->c is clockwise

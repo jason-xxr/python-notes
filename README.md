@@ -185,7 +185,12 @@
         return a
     ```
 11. Geometry
-    1. Triangle
+    1. Compare polar angle, `centered` is a list of points in `[(x1, y1), (x2, y2), ...]`. We can compare the polar angle by either of the two:
+        ```python
+        centered.sort(cmp=lambda a, b: -a[0]*b[1]+b[0]*a[1])
+        centered.sort(key=lambda p: math.atan2(p[1], p[0]))
+        ```
+    3. Triangle
        Assuming we have a free triangle (in blue-solid line) on the plane X-Y, and we have the (x, y) coordinates of the 3 vertices. 
        The area can be computed as below.
        We can see the triangle area is the same as the area of 3 red triangles, which is the half of the corresponding 3 sub rectangular panels.

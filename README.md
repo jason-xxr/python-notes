@@ -243,3 +243,9 @@
         length = lambda v: (v[0]**2+v[1]**2)**0.5
         area = lambda v21, v31: length(v21)*length(v31)
         ```
+12. Other
+    1. Map cmp to dict values
+        ```python
+        cmp = lambda a, b: (a>b)-(a<b)
+        print(['EQ', 'GT', 'LT'][cmp(x, 0)])
+        ```

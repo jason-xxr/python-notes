@@ -263,7 +263,7 @@
         Update `arr[i]`
         ```python
         delta = x-arr[i]
-        while i<n:
+        while i<=n:
             bit[i] += delta
             i = i+(i&-i)
         ```

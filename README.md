@@ -249,3 +249,21 @@
         cmp = lambda a, b: (a>b)-(a<b)
         print(['EQ', 'GT', 'LT'][cmp(x, 0)])
         ```
+    1. Fenwick Tree array
+        ```python
+        query_parent = list((i-(i&-i), i) for i in range(1,17))
+        next_fork = list((i+(i&-i), i) for i in range(1,16))
+        ```
+        Query range `arr[1:i]`
+        ```python
+        while i>0:
+            k += bit[i]
+            i = i-(i&-i)
+        ```
+        Update `arr[i]`
+        ```python
+        delta = x-arr[i]
+        while i<n:
+            bit[i] += delta
+            i = i+(i&-i)
+        ```

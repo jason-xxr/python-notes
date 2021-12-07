@@ -139,6 +139,10 @@
         ```python
         2**x.bit_length() - x - 1 if x else 1
         ```
+    1. Get lowest bit 1, 110100 -> 100, 10101 -> 1, 1000->1000 (useful in Fenwick Tree)
+        ```python
+        -x&x
+        ```
     1. Get 1 at lowest 0, 110111 -> 1000, 10101 -> 10
         ```python
         (x + 1)&(~x)
